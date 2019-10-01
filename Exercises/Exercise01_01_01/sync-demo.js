@@ -1,5 +1,5 @@
-var fs = require('fs');
-var data = fs.readdirSync('../');
+let fs = require('fs');
+let data = fs.readdirSync('../');
 console.log('data: ', data);
 console.log("This code is last");
 

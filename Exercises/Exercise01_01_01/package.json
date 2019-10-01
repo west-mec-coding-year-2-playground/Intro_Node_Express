@@ -1,12 +1,15 @@
 {
-  "name": "Exercise01_01_01",
+  "name": "exercise01_01_01",
   "version": "1.0.0",
-  "description": "",
   "main": "async-demo.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Connor Webdale",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

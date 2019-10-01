@@ -1,4 +1,4 @@
-var fs = require('fs');
+let fs = require('fs');
 const phoneNumber = (err, data) => {
     console.log('data: ', data)
 }
