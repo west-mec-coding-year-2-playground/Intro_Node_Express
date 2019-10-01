@@ -46,22 +46,22 @@ By the end of the exercise this folder should look like the following:
 ```
 
 
-## Step 1
+## Step 1 - Creating your first node FILE
  
-Create a folder named Exercise01_01_01 and open it with your IDE. Create a new file called `sync-demo.js`. You can use an editor or the command `touch sync-demo.js`.
+Use terminal to cd into the `Exercises` directory. By default the directory will be empty and you will need to create various files in order for this to be complete. Create a new file called `sync-demo.js`. You can use an editor or the command `touch sync-demo.js`.
 
 Inside `sync-demo.js`, Enter the following code:
 
   ```js
   var fs = require('fs');
-  var data = fs.readdirSync('c:/');
+  var data = fs.readdirSync('../');
   console.log('data: ', data);
   console.log("This code is last");
   ```
 
-**Execute the script** and take note of the sequence of the output by discussing it with a partner..
+**Execute the NODE script** and take note of the sequence of the output by discussing it with a partner..
 
-There are several ways we can execute the file:
+There are several ways we can execute the file with node:
 1. In terminal we can do this by running `node sync-demo.js`.
 2. In VScode, we can use [code runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner).
 3. In Brackets, the best plug-in is Node.js bindings. In Atom, the most recommended is atom-runner.
@@ -75,7 +75,7 @@ Create a new file called `async-demo.js` and enter the following code in the fil
        console.log('data: ', data)
    }
 
-   fs.readdir('c:/', phoneNumber);
+   fs.readdir('../', phoneNumber);
    console.log("This code is last");
   ```
 Execute the script and take note of the sequence of the output.
@@ -83,12 +83,12 @@ Execute the script and take note of the sequence of the output.
 ## Step 3 - Async
 
   
-Create a new file called async-demo2.js. Enter the following code:
+Create a new file called `async-demo2.js`. Enter the following code:
 
   ```js
     var fs = require('fs');
 
-    fs.readdir('c:/', function(err, data) {
+    fs.readdir('../', function(err, data) {
         console.log('data: ', data)
     });
 
@@ -118,7 +118,7 @@ Execute the script and take note of the sequence of the output.
 
 Execute the script and take note of the output.
  
-## Step 5
+## Step 5 - Gulp
 
   
 1.	We will download a package named gulp, which is a package that helps to automate repetitive tasks. Either go to the command line in the terminal, or use Brackets node.js dropdown, to download a the package using NPM:
@@ -158,18 +158,18 @@ Open a terminal and type gulp.
 
 6.	Now we can use the terminal in the local project folder, or use an IDE plug-in to make our lives easier. We can see that gulp does what it is supposed to do, and executes our simple task.
  
-## Step 6
+## Step 6 - NPM Package 
 Run a console or terminal in the project folder and enter the following command:
   ```js
-   npm init
+   npm init -y
   ```
 
 Go back into the IDE and open the package.json file for examination.
  
-## Step 7
+## Step 7 - Reading Files
 
   
-1. Create a new file called read-demo.js. Enter the following code to obtain access to the file system library from the API:
+1. Create a new file called `read-demo.js`. Enter the following code to obtain access to the file system library from the API:
   ```js
    var fs = require('fs');
   ```
@@ -177,9 +177,9 @@ Go back into the IDE and open the package.json file for examination.
 
 2. Create a simple JSON file named `data1.json` with the following contents:
   ```js
-   {
-       "name": "John"
-   }
+    {
+      "name": "John"
+    }
   ```
  
 3.	Let’s read the JSON file with an asynchronous function from the File System API called `readFile()`. It will take a path and callback as parameters. The first callback parameter will return an error or the data that is read:
@@ -192,7 +192,7 @@ Go back into the IDE and open the package.json file for examination.
 
 Give that a test. Notice the strange output, a buffer that appears to contain hex bytes.
 
-4.	We need to make use of the second optional parameter of the readFile() method to indicate the file format:
+4.	We need to make use of the second optional parameter of the `readFile()` method to indicate the file format:
 
    ```js
       fs.readFile('./data.json', 'utf-8', function(err, data) {
@@ -202,23 +202,28 @@ Give that a test. Notice the strange output, a buffer that appears to contain he
 
 Give that a test, and the output should be as expected.
 
-5.	Now let us see if it understands our JSON object that is contained in the file. Try to output a property of the JSON object:
+5.	Now inside `fs.readFile` let us see if it understands our JSON object that is contained in the file. Try to output a property of the JSON object:
     ```js
-       console.log(data);
-       console.log(data.name);
+    fs.readFile('./data.json', 'utf-8', function(err, data) {
+      console.log(data);
+      console.log(data.name);
+    });
     ```
 Give that a test. The name property that is contained in the JSON file shows up as undefined, so it has not been read in as an object.
 
 6.	We can make use of another global object: JSON. It has useful methods, one of which is `JSON.parse()`, which can translate a string to JavaScript JSON:
 
   ```js
+  fs.readFile('./data.json', 'utf-8', function(err, data) {
+    console.log(data);
     data = JSON.parse(data);
     console.log(data.name);
+  });
   ```
 
 Give that a test. The name property that is contained in the JSON file shows up correctly as the property of a JSON object.
 
-7.	Let’s try the same task using a require(), which knows how to deal with objects. Create a file called read-demo2.js:
+7.	Let’s try the same task using a `require()`, which knows how to deal with objects. Create a file called `read-demo2.js`:
 
    ```js
       var data = require('./data1.json');
@@ -230,15 +235,15 @@ Give that a test. It is much simpler, and the name property that is contained in
 ## Step 8
 
   
-1.	Create a new file called read-directory-demo.js. Enter the following code to obtain access to the file system library from the API:
+1.	Create a new file called `read-directory-demo.js`. Enter the following code to obtain access to the file system library from the API:
   ```js
    var fs = require('fs');
   ```
 
-2.	Let’s read the directory with an asynchronous function from the File System API called readdir(). It will take a path and callback as parameters. The first callback parameter will return an error or the data that is read:
+2.	Let’s read the directory with an asynchronous function from the File System API called `readdir()`. It will take a path and callback as parameters. The first callback parameter will return an error or the data that is read:
 
   ```js
-   fs.readdir('c:/', function(err, data) {
+   fs.readdir('../', function(err, data) {
        console.log(data);
    });
   ```
@@ -248,7 +253,7 @@ Give that a test. Notice that the output is returned as an array of file names.
 ## Step 9 - Writting Files
 
   
-1.	Create a new file called write-file-demo.js. Enter the following code to obtain access to the file system library from the API:
+1.	Create a new file called `write-file-demo.js`. Enter the following code to obtain access to the file system library from the API:
 `var fs = require('fs');`
 
 2.	Let’s try to write a JSON object to the file as follows:
@@ -268,21 +273,22 @@ Give that a test, and the json file should be created. Open the file and notice 
 
 3.	The problem is that the `writeFile()` method expects its data to be either a string or a buffer, and we gave it an object. The first solution is to write it directly as a string as follows. Note that we have enclosed the whole object in single quotes, and double quoted both the property name and value:
 
-   ```js
+  ```js
     var jsonString = '{ "name": "John"}';
-   ```
+  ```
 
 Give that a test, and open the file and notice that the contents are as required.
 
-4.	There is a better solution to write JSON objects to a file with this method. We can use another method of the global JSON object called JSON.stringify(). We will comment out the existing JSON and write it in a more Best Practices way. We will then wrap the object in the JSON method for the `writeFile()` call:
+4.	There is a better solution to write JSON objects to a file with this method. We can use another method of the global JSON object called J`SON.stringify()`. We will comment out the existing JSON and write it in a more Best Practices way. We will then wrap the object in the JSON method for the `writeFile()` call:
 
-   ```js
-   //var jsonString = '{ "name": "John"}';
+  ```js
+      //var jsonString = '{ "name": "John"}';
 
-   var jsonString = { 
-       name: 'John'
-   };
-   ```
+      var jsonString = { 
+      name: 'John'
+      };
+  ```
+
 Give that a test, and open the file and notice that the contents are also as required. 
 fs.writeFile('data2.json', JSON.stringify(jsonString), function(err) {
 
@@ -299,7 +305,7 @@ fs.writeFile('data2.json', JSON.stringify(jsonString), function(err) {
 
 Inspect the package.json file to make sure that express has been added to the dependencies.
 
-2.	Create a new file called express-static-demo.js. Enter the following code to obtain access to the express library from the node_modules:
+2.	Create a new file called `express-static-demo.js`. Enter the following code to obtain access to the express library from the node_modules:
   ```js
    var express = require('express');
   ```
@@ -311,7 +317,7 @@ Inspect the package.json file to make sure that express has been added to the de
    var app = express();
   ```
 
-4.	Now let’s turn our node.js application into a server. We can use the listen() method of express to have the server listening on a port. We can use it with a callback to determine if it is running as follows:
+4.	Now let’s turn our node.js application into a server. We can use the `listen()` method of express to have the server listening on a port. We can use it with a callback to determine if it is running as follows:
 
   ```js
       var app = express();
@@ -322,7 +328,7 @@ Inspect the package.json file to make sure that express has been added to the de
       });
   ```
 
-Run the node application and it should indicate that it is listening. Now open your browser and navigate to localhost:port. We should connect and get a response, but no content, because we are not yet serving anything.
+Run the node application and it should indicate that it is listening. Now open your browser and navigate to `localhost:port`. We should connect and get a response, but no content, because we are not yet serving anything.
 
 5.	We will create a static file to serve by scaffolding a new HTML file named index.html, with some minimal code in it as follows:
   ```html
@@ -342,8 +348,8 @@ Run the node application and it should indicate that it is listening. Now open y
 Test this with Live Preview and shut it down.
  
 
-6.	Employ the Express object’s use() method to serve some content. We will specify the content as static with the static() method. Notice that we use the Node.js global variable __dirname, which indicates current directory. 
-By standard, the static file will default to index.html:
+6.	Employ the Express object’s `use()` method to serve some content. We will specify the content as static with the `static()` method. Notice that we use the Node.js global variable `__dirname`, which indicates current directory. 
+By standard, the static file will default to `index.html`:
 
    ```js
       var port = 8080;
@@ -355,7 +361,7 @@ Run the node file, go back to the browser and connect with the host, and the sta
 ## Step 11 - Creating Endpoints with ExpressJS
 
   
-1.	Copy the file express-static-demo.js to a new file called `express-endpoint-demo.js`. Just delete the app.use() call, and we can make use of the rest of the server setup:
+1.	Copy the file express-static-demo.js to a new file called `express-endpoint-demo.js`. Just delete the `app.use()` call, and we can make use of the rest of the server setup:
 
   ```js
    var express = require('express');
@@ -368,7 +374,7 @@ Run the node file, go back to the browser and connect with the host, and the sta
   ```
 
 Give this a test run and then terminate it.
- 
+
 2.	We must now construct an **endpoint** to request our dynamic content. In a `use()` method, we will specify the **URL** of the resource, which will be **/message**. We also implement a callback as **middleware** between the HTTP request and response as follows:
    
   ```js
@@ -377,31 +383,31 @@ Give this a test run and then terminate it.
    });
   ```
 
-Run the node application and it should indicate that it is listening. Now open your browser and navigate to localhost:port/message. We should get a console.log() message, but we still have no response in our browser. This shows that the middleware is running between the request and the response.
+Run the node application and it should indicate that it is listening. Now open your browser and navigate to `localhost:port/message`. We should get a `console.log()` message, but we still have no response in our browser. This shows that the middleware is running between the request and the response.
 
 3.	We can now implement our response inside the **callback**:
     
     ```js
-    console.log('User requested an endpoint!');
-    res.send('<h2>Hello from the server endpoint!</h2>');
+       console.log('User requested an endpoint!');
+       res.send('<h2>Hello from the server endpoint!</h2>');
     ```
 
-Run the node application and it should indicate that it is listening. Now open your browser and navigate to localhost:port. We should now get a response from the server.
+Run the node application and it should indicate that it is listening. Now open your browser and navigate to `localhost:port`. We should now get a response from the server.
 
 4.	Now let’s create another endpoint that will simulate retrieving data from a database, which we will do later on. Instead, we will just retrieve some data from a JSON file which we already have. Create the new endpoint as follows:
 
    ```js
-   app.use('/users', function(req, res) {
-       
-   });
+      app.use('/users', function(req, res) {
+          
+      });
    ```
 
 5.	Let’s get access to the file system with a `require()` statement as follows:
    
    ```js
-   var app = express();
-   var fs = require('fs');
-   var port = 8080;
+      var app = express();
+      var fs = require('fs');
+      var port = 8080;
    ```
 
 6.	Open `read-demo.js` and copy the `readfile()` call. Paste it into the new endpoint middleware callback, and modify it as follows:
