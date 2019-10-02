@@ -6,6 +6,6 @@ let port = 8080;
 app.use(express.static(__dirname));
 
 // turning our node.js applicatoin into a server 
-app.listen(port, () => {console.log('Server listening on localhost:%s', port);});
+app.listen(port, () => console.log('Server listening on localhost:%s', port););
 
 
