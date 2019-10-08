@@ -3,7 +3,17 @@ head
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible' content='ie=edge')
-  title Pokemon!
+  title title
   link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
   link(rel='stylesheet' href='styles.css')
-script(src='pokemon.js' async='' defer='')
+.card(style='width: 30vw;')
+  #sprite
+    img(src='International_Pokémon_logo.svg.png' alt='')
+  .card-body
+    h5.card-title(align='center') Choose a pokemon!
+    p(align='center')
+    #buttons(align='center')
+      button#gible.btn.btn-secondary(type='button') Gible
+      button#cubone.btn.btn-secondary(type='button') Cubone
+      button#pikachu.btn.btn-secondary(type='button') Pikachu
+      button#squirtle.btn.btn-secondary(type='button') Squirtle
