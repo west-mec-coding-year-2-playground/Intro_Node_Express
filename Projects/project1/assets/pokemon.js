@@ -80,4 +80,12 @@ fetch('https://pokeapi.co/api/v2/pokemon/' + pokemon + '/')
     );
 }
 
-
+if (window.location.href.indexOf("gible") != -1) {
+    writePokemon("gible");
+} else if (window.location.href.indexOf("cubone") != -1) {
+    writePokemon("cubone");
+} else if (window.location.href.indexOf("pikachu") != -1) {
+    writePokemon("pikachu");
+} else if (window.location.href.indexOf("squirtle") != -1) {
+    writePokemon("squirtle");
+}
