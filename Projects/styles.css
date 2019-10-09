@@ -8,6 +8,10 @@ div.card {
     width: 20vw;
 }
 
+html {
+    background-image: url("pokeposter2.png");
+}
+
 div.startPage {
     align-content: center;
     text-align: center;

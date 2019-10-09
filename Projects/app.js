@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 })
 
 app.use('/honedge', function (req, res) {
-    res.send(" <link rel='stylesheet' href='styles.css'><div class='card'><img src='pokemon.png' alt='pokemon'><div id='name'></div><div id='spriteH'></div><script src='fetch.js' async></script><button> <a href='/'> Back</a></button><button> <a href='/doublade'> Level 35</a></button></div>");
+    res.send("<link rel='stylesheet' href='styles.css'><div class='card'><img src='pokemon.png' alt='pokemon'><div id='name'></div><div id='spriteH'></div><script src='fetch.js' async></script><button> <a href='/'> Back</a></button><button> <a href='/doublade'> Level 35</a></button></div>");
 });
 app.use('/doublade', function (req, res) {
     res.send(" <link rel='stylesheet' href='styles.css'><div class='card'><img src='pokemon.png' alt='pokemon'><div id='name'></div><div id='spriteD'></div><script src='fetch.js' async></script><button> <a href='/honedge'> Back</a></button><button> <a href='/aegislash'> Dusk Stone</a></button></div>");
