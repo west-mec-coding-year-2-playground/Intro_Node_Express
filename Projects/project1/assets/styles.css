@@ -9,8 +9,28 @@
 
 .card {
     border-radius: 10px;
+    height: 250px;
 }
 
 img {
     width: 10vw;
+}
+
+.col-1-2 {
+    width: 50%;
+    margin: 0;
+    float: left;
+}
+
+#text {
+    padding: 10% 0;
+}
+
+.col-1-1 {
+    width: 100%;
+    float: left;
+}
+
+#logo {
+    width: 20vw;
 }
