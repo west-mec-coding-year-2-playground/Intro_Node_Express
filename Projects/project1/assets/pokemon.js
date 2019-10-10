@@ -12,7 +12,7 @@ fetch('https://pokeapi.co/api/v2/pokemon/' + pokemon + '/')
 
             /*ADDING THE SPRITE INTO A DIV*/
             const htmlSelector = document.getElementById("sprite");
-            const img = `<img src="${sprites.front_shiny}" alt="">`;
+            const img = `<img src="${sprites.front_default}" alt="">`;
             htmlSelector.innerHTML = img;
 
             /*ADDING THE NAME OF POKEMON TO THE DOCUMENT*/ 
