@@ -53,5 +53,6 @@ img {
         width: 100vw;
         float: left;
         height: 100%;
+        border-radius: 0px;
     }
 }
