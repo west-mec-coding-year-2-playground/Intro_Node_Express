@@ -88,4 +88,8 @@ if (window.location.href.indexOf("gible") != -1) {
     writePokemon("pikachu");
 } else if (window.location.href.indexOf("squirtle") != -1) {
     writePokemon("squirtle");
+} else if (window.location.href.indexOf(userPokemon) != -1) {
+    writePokemon(userPokemon);
 }
+
+
