@@ -25,14 +25,15 @@
                 <div class="topnav" align="center" id="search">
                     <form>
                         <input type="text" id="searchBar" placeholder="Search...">
-                        <input type="submit" id="submit">
+                        <!-- <input type="submit" id="submit"> -->
+                        <a href="user.html" class="btn btn-secondary">Submit</a>
                     </form>
                   </div>
               </div>
-              <!-- <script>
-              var userPokemon = document.getElementById("searchBar").innerText;
-              </script> -->
+              <script>
+              export let userPokemon = document.getElementById("searchBar").value;
+              </script>
               <script src="pokemon.js"></script>
-              <script src="search.js"></script>
+              <!-- <script src="search.js"></script> -->
 </body>
 </html>
