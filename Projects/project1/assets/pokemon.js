@@ -83,7 +83,8 @@ function writePokemon(pokemon) {
         );
 }
 
-let userPokemon = document.getElementById("searchBar").value
+
+
 // checking the URL, finding the pokemon, and running our function using that pokemon 
 window.onload = () => {
     if (window.location.href.indexOf("gible") != -1) {
@@ -94,18 +95,19 @@ window.onload = () => {
         writePokemon("pikachu");
     } else if (window.location.href.indexOf("squirtle") != -1) {
         writePokemon("squirtle");
-    } else if (window.location.href.indexOf(userPokemon) != -1) {
-        console.log("this would be the user's pokemon page");
+    } else {
+        console.log(document.getElementById("searchBar").value);
+        if (document.getElementById("searchBar").value != "") {
+            let submit = document.getElementById("submit");
+            submit.onclick = () => {
+                let userPokemon = document.getElementById("searchBar").value;
+                console.log(userPokemon)
+            }
+        } else {
+            console.log("button has not yet been clicked");
+        }
     }
-}
-
-
-
-
-if (document.getElementById("submit")) {
-    let submit = document.getElementById("submit");
-    submit.onclick = () => {
-        // let userPokemon = document.getElementById("searchBar").value;
-        writePokemon(userPokemon);
-    }
+    // else if (window.location.href.indexOf(userPokemon) != -1) {
+    //     console.log("this would be the user's pokemon page");
+    // }
 }
