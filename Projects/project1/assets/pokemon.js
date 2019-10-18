@@ -78,7 +78,9 @@ function writePokemon(pokemon) {
                 } else if (mainType == 'fairy') {
                     card.style.backgroundColor = 'rgba(214, 70, 183, 0.877)';
                 }
-
+                if (data.name != undefined) {
+                    console.log("enjoy");
+                }
             }
         );
 }
@@ -86,7 +88,21 @@ function writePokemon(pokemon) {
 
 
 // checking the URL, finding the pokemon, and running our function using that pokemon 
-window.onload = () => {
+// window.onload = () => {
+//     if (window.location.href.indexOf("gible") != -1) {
+//         writePokemon("gible");
+//     } else if (window.location.href.indexOf("cubone") != -1) {
+//         writePokemon("cubone");
+//     } else if (window.location.href.indexOf("pikachu") != -1) {
+//         writePokemon("pikachu");
+//     } else if (window.location.href.indexOf("squirtle") != -1) {
+//         writePokemon("squirtle");
+//     } else {
+//        console.log("nothing has been clicked or typed");
+//     }
+// }
+
+setTimeout(function()  {
     if (window.location.href.indexOf("gible") != -1) {
         writePokemon("gible");
     } else if (window.location.href.indexOf("cubone") != -1) {
@@ -96,18 +112,83 @@ window.onload = () => {
     } else if (window.location.href.indexOf("squirtle") != -1) {
         writePokemon("squirtle");
     } else {
-        console.log(document.getElementById("searchBar").value);
-        if (document.getElementById("searchBar").value != "") {
-            let submit = document.getElementById("submit");
-            submit.onclick = () => {
-                let userPokemon = document.getElementById("searchBar").value;
-                console.log(userPokemon)
-            }
-        } else {
-            console.log("button has not yet been clicked");
-        }
+       console.log("nothing has been clicked or typed");
     }
-    // else if (window.location.href.indexOf(userPokemon) != -1) {
-    //     console.log("this would be the user's pokemon page");
-    // }
+} , 1);
+
+
+document.getElementById("submit").onclick = () => {
+    let userPoke = document.getElementById("searchBar").value;
+
+    //clearing the home page to write a card 
+    let card = document.querySelector(".card")
+    card.innerHTML = "";
+
+    // creating the document fragment 
+    let fragment = new DocumentFragment();
+
+    // setting up the container card-body div
+    let cardBody = document.createElement("div");
+    cardBody.setAttribute("class", "card-body");
+    
+    // making the card-body div 
+        // making the div to contain the sprite div 
+        let halfDiv1 = document.createElement("div");
+        halfDiv1.setAttribute("class", "col-1-2");
+            //making the sprite div 
+            let spriteDiv = document.createElement("div");
+            spriteDiv.setAttribute("id", "sprite");
+            spriteDiv.setAttribute("align", "center");
+        // appending the sprite div into its containing div 
+        halfDiv1.appendChild(spriteDiv);
+        // appending the containing div to the card-body div 
+        cardBody.appendChild(halfDiv1);
+
+        //making the div to contain the pokemon name and type
+        let halfDiv2 = document.createElement("div");
+        halfDiv2.setAttribute("class", "col-1-2");
+        halfDiv2.setAttribute("id", "text");
+            //making the h5
+            let h5Elem = document.createElement("h5");
+            h5Elem.setAttribute("class", "card-title");
+            h5Elem.setAttribute("align", "center");
+            //making the p
+            let pElem = document.createElement("p");
+            pElem.setAttribute("class", "card-text");
+            pElem.setAttribute("align", "center");
+            //appending the h5 div to it's containing div 
+            halfDiv2.appendChild(h5Elem);
+            halfDiv2.appendChild(pElem);
+            // appending the second col div to the card body div 
+            cardBody.appendChild(halfDiv2);
+        
+        //making the last div for a back button 
+        let fullDiv = document.createElement("div");
+        fullDiv.setAttribute("class", "col-1-1");  
+            // making the div to contain the back link
+            let linkDiv = document.createElement("div");
+            linkDiv.setAttribute("align", "center");
+            // making the back link 
+            let backLink = document.createElement("a");
+            backLink.setAttribute("href", "home.html");
+            backLink.setAttribute("class", "btn btn-secondary");
+            backLink.innerText = "Back"
+            // appending the back link into its containing div
+            linkDiv.appendChild(backLink);
+            //appending the containing div to the full col div
+            fullDiv.appendChild(linkDiv);
+            // appending the full col div to the card body div 
+            cardBody.appendChild(fullDiv);
+
+    // appending the entire cardBody div to our fragment
+    fragment.appendChild(cardBody);
+
+    // appending the entire fragment to the now empty card div
+    card.appendChild(fragment);
+
+    //changing the window title to the user's pokemon
+    
+
+    // creating the card based on the user input pokemon
+    writePokemon(userPoke);
 }
