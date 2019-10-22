@@ -112,94 +112,104 @@ setTimeout(function()  {
     } else if (window.location.href.indexOf("squirtle") != -1) {
         writePokemon("squirtle");
     } else {
-        console.log("nothing has been clicked or typed");
+        
      }
 } , 1);
 
 
-document.getElementById("submit").onclick = () => {
+// this function runs when the submit button for the search bar is clicked 
+(document.getElementById("submit").onclick) = async () => {
+    // sets this variable to the value of the input box 
     let userPoke = document.getElementById("searchBar").value;
 
+    // checking if there is any text in the box
     if (userPoke === "") {
         alert("Please enter a pokemon name");
-    } else if () {
-        alert("Please enter a valid pokemon name")
-    } else if () {
-        alert("this worked");
+    } else if (userPoke != "") {
+        // runs if there is any text in the textbox 
+
+        // response is a fetch request using the text in the textbox
+        let response = await fetch('https://pokeapi.co/api/v2/pokemon/' + userPoke + '/'); 
+
+        // if the fetch request is successful, and returns ok, then this runs, changing the HTML to make a new card with that pokemon's name 
+        if (response.status === 200) {
+            //clearing the home page to write a card 
+            let card = document.querySelector(".card")
+            card.innerHTML = "";
+
+            // creating the document fragment 
+            let fragment = new DocumentFragment();
+
+            // setting up the container card-body div
+            let cardBody = document.createElement("div");
+            cardBody.setAttribute("class", "card-body");
+
+            // making the card-body div 
+                // making the div to contain the sprite div 
+                let halfDiv1 = document.createElement("div");
+                halfDiv1.setAttribute("class", "col-1-2");
+                    //making the sprite div 
+                    let spriteDiv = document.createElement("div");
+                    spriteDiv.setAttribute("id", "sprite");
+                    spriteDiv.setAttribute("align", "center");
+                // appending the sprite div into its containing div 
+                halfDiv1.appendChild(spriteDiv);
+                // appending the containing div to the card-body div 
+                cardBody.appendChild(halfDiv1);
+
+                //making the div to contain the pokemon name and type
+                let halfDiv2 = document.createElement("div");
+                halfDiv2.setAttribute("class", "col-1-2");
+                halfDiv2.setAttribute("id", "text");
+                    //making the h5
+                    let h5Elem = document.createElement("h5");
+                    h5Elem.setAttribute("class", "card-title");
+                    h5Elem.setAttribute("align", "center");
+                    //making the p
+                    let pElem = document.createElement("p");
+                    pElem.setAttribute("class", "card-text");
+                    pElem.setAttribute("align", "center");
+                    //appending the h5 div to it's containing div 
+                    halfDiv2.appendChild(h5Elem);
+                    halfDiv2.appendChild(pElem);
+                    // appending the second col div to the card body div 
+                    cardBody.appendChild(halfDiv2);
+                
+                //making the last div for a back button 
+                let fullDiv = document.createElement("div");
+                fullDiv.setAttribute("class", "col-1-1");  
+                    // making the div to contain the back link
+                    let linkDiv = document.createElement("div");
+                    linkDiv.setAttribute("align", "center");
+                    // making the back link 
+                    let backLink = document.createElement("a");
+                    backLink.setAttribute("href", "home.html");
+                    backLink.setAttribute("class", "btn btn-secondary");
+                    backLink.innerText = "Back"
+                    // appending the back link into its containing div
+                    linkDiv.appendChild(backLink);
+                    //appending the containing div to the full col div
+                    fullDiv.appendChild(linkDiv);
+                    // appending the full col div to the card body div 
+                    cardBody.appendChild(fullDiv);
+
+            // appending the entire cardBody div to our fragment
+            fragment.appendChild(cardBody);
+
+            // appending the entire fragment to the now empty card div
+            card.appendChild(fragment);
+
+            //changing the window title to the user's pokemon
+
+
+            // creating the card based on the user input pokemon
+            writePokemon(userPoke);
+        } else if (response.status === 404) {
+            // this runs if the fetch request using the text box text doesn't work 
+            alert("Please enter a valid pokemon name");
+        } else {
+            // just a failsafe, if something weird happens 
+            alert("We don't know what happened, please refresh and try again");
+        }
     }
-}
-
-
-function doesNoting() {
-//clearing the home page to write a card 
-let card = document.querySelector(".card")
-card.innerHTML = "";
-
-// creating the document fragment 
-let fragment = new DocumentFragment();
-
-// setting up the container card-body div
-let cardBody = document.createElement("div");
-cardBody.setAttribute("class", "card-body");
-
-// making the card-body div 
-    // making the div to contain the sprite div 
-    let halfDiv1 = document.createElement("div");
-    halfDiv1.setAttribute("class", "col-1-2");
-        //making the sprite div 
-        let spriteDiv = document.createElement("div");
-        spriteDiv.setAttribute("id", "sprite");
-        spriteDiv.setAttribute("align", "center");
-    // appending the sprite div into its containing div 
-    halfDiv1.appendChild(spriteDiv);
-    // appending the containing div to the card-body div 
-    cardBody.appendChild(halfDiv1);
-
-    //making the div to contain the pokemon name and type
-    let halfDiv2 = document.createElement("div");
-    halfDiv2.setAttribute("class", "col-1-2");
-    halfDiv2.setAttribute("id", "text");
-        //making the h5
-        let h5Elem = document.createElement("h5");
-        h5Elem.setAttribute("class", "card-title");
-        h5Elem.setAttribute("align", "center");
-        //making the p
-        let pElem = document.createElement("p");
-        pElem.setAttribute("class", "card-text");
-        pElem.setAttribute("align", "center");
-        //appending the h5 div to it's containing div 
-        halfDiv2.appendChild(h5Elem);
-        halfDiv2.appendChild(pElem);
-        // appending the second col div to the card body div 
-        cardBody.appendChild(halfDiv2);
-    
-    //making the last div for a back button 
-    let fullDiv = document.createElement("div");
-    fullDiv.setAttribute("class", "col-1-1");  
-        // making the div to contain the back link
-        let linkDiv = document.createElement("div");
-        linkDiv.setAttribute("align", "center");
-        // making the back link 
-        let backLink = document.createElement("a");
-        backLink.setAttribute("href", "home.html");
-        backLink.setAttribute("class", "btn btn-secondary");
-        backLink.innerText = "Back"
-        // appending the back link into its containing div
-        linkDiv.appendChild(backLink);
-        //appending the containing div to the full col div
-        fullDiv.appendChild(linkDiv);
-        // appending the full col div to the card body div 
-        cardBody.appendChild(fullDiv);
-
-// appending the entire cardBody div to our fragment
-fragment.appendChild(cardBody);
-
-// appending the entire fragment to the now empty card div
-card.appendChild(fragment);
-
-//changing the window title to the user's pokemon
-
-
-// creating the card based on the user input pokemon
-writePokemon(userPoke);
 }
