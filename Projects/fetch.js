@@ -63,7 +63,7 @@ fetch('https://pokeapi.co/api/v2/pokemon/doublade/')
             ...img
         } = data.sprites;
         selector = document.getElementById('spriteD');
-        pokeIMG = `<img src="${img.front_shiny}">`;
+        pokeIMG = `<img src='${img.front_shiny}'>`;
         selector.innerHTML = pokeIMG;
         document.getElementById('name').innerHTML = `<h1>${data.name}<h1>`;
     });
