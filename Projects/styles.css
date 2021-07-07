@@ -1,0 +1,76 @@
+div.card {
+    background-color: rgb(40, 100, 212);
+    align-content: center;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    height: auto;
+    width: 20vw;
+}
+
+html {
+    background-image: url("pokeposter2.png");
+}
+
+div.startPage {
+    align-content: center;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    height: auto;
+    width: 20vw;
+}
+
+#sprite img {
+    height: 20vw;
+    margin: 0 auto;
+}
+
+#spriteK img {
+    height: 20vw;
+    margin: 0 auto;
+}
+
+#spriteA img {
+    height: 20vw;
+    margin: 0 auto;
+}
+
+#spriteM img {
+    height: 20vw;
+    margin: 0 auto;
+}
+
+#spriteS img {
+    height: 20vw;
+    margin: 0 auto;
+}
+
+#spriteD img {
+    height: 20vw;
+    margin: 0 auto;
+}
+
+#spriteH img {
+    height: 20vw;
+    margin: 0 auto;
+}
+
+button {
+    background-color: black;
+
+    border-radius: 10px;
+    font-size: 2vw;
+    width: 11vw;
+    height: 3vw;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+button a {
+    text-decoration: none;
+    color: rgb(40, 100, 212);
+}
